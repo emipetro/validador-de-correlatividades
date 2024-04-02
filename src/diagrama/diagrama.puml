@@ -1,0 +1,30 @@
+@startuml Diagrama de Clases
+
+class Alumno{
+    -nombre : String
+    -apellido : String 
+    -materiasAprobadas : List<Materia>
+
+    +agregarMateriasAprobadas(List<Materia>) : void
+    +aprobo(Materia) : boolean
+    +puedeCursar(Materia) : boolean
+}
+
+class Inscripcion{
+    -alumno : Alumno
+    -materias : List<Materia>
+
+    +aprobada : boolean
+}
+
+class Materia{
+    -nombre : String
+    -materiasCorrelativas : List<Materia>
+}
+
+Inscripcion --* Alumno
+Alumno --> "*" Materia
+Inscripcion --> "*" Materia
+Materia --> "*" Materia
+
+@enduml
